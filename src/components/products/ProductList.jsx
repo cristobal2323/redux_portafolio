@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import Product from './Product';
 import uuid from 'uuid';
+import DashBoardStyle from '../../../public/dashboard.scss';
+
 
 const ProductList = ({
 	loading,

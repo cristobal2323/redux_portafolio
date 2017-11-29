@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import * as productActions from '../actions/productActions';
+import * as productActions from '../../actions/productActions';
 
 class ProductAddContainer extends Component {
   constructor (props) {

@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductList from './ProductList';
-import * as productActions from '../actions/productActions';
-import * as cartActions from '../actions/cartActions';
+import * as productActions from '../../actions/productActions';
+import * as cartActions from '../../actions/cartActions';
 
 class ProductListContainer extends Component{
 

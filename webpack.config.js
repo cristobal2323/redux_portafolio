@@ -33,28 +33,33 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.css?$/,
-				use:[
-					{loader: 'style-loader'},
-					{loader: 'css-loader'}
-				]
-			},
-			{
-				test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-				use: 'file-loader'
-			},
-			{
-				test: /\.(woff|woff2)$/,
-				use: 'url-loader?prefix=font/&limit=5000'
-			},
-			{
-				test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-				use: 'url-loader?limit=10000&mimetype=application/octet-stream'
-			},
-			{
-				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-				use: 'url-loader?limit=10000&mimetype=image/svg+xml'
-			}
+        		test: /\.scss$/,
+        		exclude: /(node_modules)/,
+        		use: [
+          			'style-loader',
+          			{
+            			loader: 'css-loader',
+            			options: {
+              				importLoaders: 1,
+              				modules: true,
+              				localIdentName: '[name]__[local]___[hash:base64:5]',
+            			},
+          			},
+          			{
+            		loader: "sass-loader",
+	            		options: {
+	              			includePaths: [
+	                			path.resolve(__dirname, './public')
+	            			],
+	              			sourceMap: true
+	            		}
+          			}
+        		],
+      		},
+      		{ test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?name=[path][name].[ext]limit=10000&mimetype=application/font-woff" },
+      		{ test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader", options:{ name:'[path][name].[ext]', publicPath: './'}},
+      		{ test: /\.(gif|png|jpe?g|svg)$/i, loader: "file-loader",options:{name: '[path][name].[ext]',publicPath: './'}},
+      		{ test: /\.json$/, exclude: /(node_modules)/, use: 'json-loader'}
 		]
 	},
 
@@ -70,7 +75,7 @@ module.exports = {
 	devServer: {
 		host: '0.0.0.0',
 		hot: true,
-		port: 3001,
+		port: 3000,
 		inline: true,
 		contentBase: path.join(__dirname,'src'),
 		historyApiFallback : true
