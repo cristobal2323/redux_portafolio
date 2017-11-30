@@ -20,8 +20,8 @@ class Header extends Component {
             <ul className={HomeStyle.nav_active}>
               <li><a href="#">Home</a></li>
               <li><a href="#">About Me</a></li>
-              <li><a href="#">Resume</a></li>
-              <li><a href="#">Work History</a></li>
+              <li><a href="#">Stack</a></li>
+              <li><a href="#">My Timeline</a></li>
               <li><a href="#">My projects</a></li>
               <li><a href="#">Contacts</a></li>
             </ul>

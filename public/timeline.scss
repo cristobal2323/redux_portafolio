@@ -1,0 +1,135 @@
+.time{
+	background: $header;
+	.time_item{
+		@include content;
+		h3{
+			margin: 0 0 1em 0;
+			text-transform: uppercase;
+			color: $link;
+		}
+	}
+	.time_box_left{
+		display: flex;
+		div{
+			width: 48%;
+			position: relative;
+			padding: 1em;
+			background: $section;
+			@include vertical-tablet-down {
+				width: 100%;
+			}
+			img{
+				margin: auto;
+				width: 100%;
+				display: block;
+				margin: auto;
+				+ h4{
+					margin-top: 1em;
+				}
+			}
+			h4{
+				margin: 0;
+				color: $link;
+				font-size: $fontRegular;
+			}
+			p{
+				color: $blanco;
+				font-size: $fontSmall;
+				margin: 0;
+			}
+			&:after{
+    			content: "\f1e3";
+	        	font-family: FontAwesome;
+	        	color: $link;
+	        	position: absolute;
+	        	width: 23px;
+	        	height: 23px;
+	        	right: -6.5%;
+	        	top: -2%;
+	        	z-index: 2;
+    		}
+    		&:before{
+    			content: "";
+	        	background: $link;
+	        	position: absolute;
+	        	width: 2px;
+	        	height: 100%;
+	        	right: -4%;
+	        	top: 0;
+	        	z-index: 1;
+    		}
+    		@include vertical-tablet-down {
+				&:before, &:after{
+					content: none;
+				}
+			}
+		}
+		@include vertical-tablet-down {
+			+ .time_box_right{
+				margin-top: 1em;
+			}
+		}
+	}
+	.time_box_right{
+		display: flex;
+		justify-content: flex-end;
+		div{
+			width: 48%;
+			position: relative;
+			padding: 1em;
+			background: $section;
+			@include vertical-tablet-down {
+				width: 100%;
+			}
+			img{
+				margin: auto;
+				width: 100%;
+				display: block;
+				margin: auto;
+				+ h4{
+					margin-top: 1em;
+				}
+			}
+			h4{
+				margin: 0;
+				color: $link;
+				font-size: $fontRegular;
+			}
+			p{
+				color: $blanco;
+				font-size: $fontSmall;
+				margin: 0;
+			}
+			&:after{
+    			content: "\f1e3";
+	        	font-family: FontAwesome;
+	        	color: $link;
+	        	position: absolute;
+	        	width: 23px;
+	        	height: 23px;
+	        	left: -6%;
+	        	top: -2%;
+    		}
+    		&:before{
+    			content: "";
+	        	background: $link;
+	        	position: absolute;
+	        	width: 2px;
+	        	height: 100%;
+	        	left: -4.6%;
+	        	top: 0;
+	        	z-index: 1;
+    		}
+    		@include vertical-tablet-down {
+				&:before, &:after{
+					content: none;
+				}
+			}
+		}
+		@include vertical-tablet-down {
+			+ .time_box_left{
+				margin-top: 1em;
+			}
+		}
+	}
+}
