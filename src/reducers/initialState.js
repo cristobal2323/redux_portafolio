@@ -12,7 +12,11 @@ const initialState = {
 	cart:{
 		items: [],
 		total: 0
-	}
+	},
+	savePerson:{
+		error: null,
+		loading: false
+	},
 };
 
 export default initialState;

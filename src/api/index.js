@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const baseURL = 'https://ecommerce-api-a4661.herokuapp.com/api';
+const baseURL = 'http://localhost:3001/api';
 
 const API = {
 	products: {
@@ -26,7 +26,20 @@ const API = {
 		    const data = await response.json();
 		    return data;
     	}
-		
+	},
+	person: {
+		async save (item) {
+      		const response = await fetch(`${baseURL}/person`, {
+	        method: 'POST',
+	        headers: new Headers({
+	        	'Content-Type': 'application/json',
+	        	Accept: 'application/json',
+	        }),
+	        body: JSON.stringify(item)
+	      	});
+		    const data = await response.json();
+		    return data;
+    	}
 	}
 }
 
