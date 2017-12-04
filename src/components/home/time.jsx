@@ -10,7 +10,7 @@ const Time = ({
             
             <div className={HomeStyle.time_box_left}>
               <div>
-                <img src="http://via.placeholder.com/350x150" alt="test" />
+                <img src="https://via.placeholder.com/350x150" alt="test" />
                 <h4>Undurraga TI - 2010</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
               </div>
@@ -18,7 +18,7 @@ const Time = ({
 
             <div className={HomeStyle.time_box_right}>
               <div>
-                <img src="http://via.placeholder.com/350x150" alt="test" />
+                <img src="https://via.placeholder.com/350x150" alt="test" />
                 <h4>Undurraga TI - 2010</h4>
                 <p>Encargado de mantención y desarrollo</p>
               </div>
@@ -26,7 +26,7 @@ const Time = ({
 
             <div className={HomeStyle.time_box_left}>
               <div>
-                <img src="http://via.placeholder.com/350x150" alt="test" />
+                <img src="https://via.placeholder.com/350x150" alt="test" />
                 <h4>Undurraga TI - 2010</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
               </div>
