@@ -43,9 +43,8 @@ module.exports = {
       { test: /\.json$/, exclude: /(node_modules)/, use: 'json-loader'}
     ]
   },
-
+ 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development' }
     }),
@@ -67,9 +66,9 @@ module.exports = {
 
   devServer: {
     host: '0.0.0.0',
-    hot: true,
+    hot: false,
     port: process.env.PORT || 3000,
-    inline: true,
+    inline: false,
     contentBase: path.join(__dirname, './build'),
     historyApiFallback: true
   }
