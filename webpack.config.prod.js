@@ -68,7 +68,7 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     hot: true,
-    port: 3000,
+    port: process.env.PORT || 3000,
     inline: true,
     contentBase: path.join(__dirname, './build'),
     historyApiFallback: true
