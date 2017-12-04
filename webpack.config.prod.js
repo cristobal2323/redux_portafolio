@@ -25,42 +25,32 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
+        use:{
           loader: 'babel-loader'
         }
       },
       {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' }
-        ]
+        test: /\.scss$/,
+        exclude: /(node_modules)/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'sass-loader'],
+        }),
       },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        use: 'url-loader?prefix=font/&limit=5000'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=image/svg+xml'
-      }
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?name=[path][name].[ext]limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader", options:{ name:'[path][name].[ext]', publicPath: '/'}},
+      { test: /\.(gif|png|jpe?g|svg)$/i, loader: "file-loader",options:{name: '[path][name].[ext]',publicPath: '/'}},
+      { test: /\.json$/, exclude: /(node_modules)/, use: 'json-loader'}
     ]
   },
 
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development' }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(true),
-    new ExtractTextPlugin(path.join(__dirname, 'build', 'styles.css')),
+    new ExtractTextPlugin('styles.css'),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Redux Ecommerce',
@@ -78,7 +68,7 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     hot: true,
-    port: 3001,
+    port: 3000,
     inline: true,
     contentBase: path.join(__dirname, './build'),
     historyApiFallback: true
