@@ -7,6 +7,7 @@ import cart from './cartReducer';
 /* Person */
 import savePerson from './savePersonReducer';
 import listPerson from './listPersonReducer';
+import updatePerson from './updatePersonReducer';
 
 const rootReducer = combineReducers({
 	routing: routerReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
 	activeProduct,
 	cart,
 	savePerson,
-	listPerson
+	listPerson,
+	updatePerson,
 });
 
 export default rootReducer;

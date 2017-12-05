@@ -22,6 +22,11 @@ const initialState = {
 		error: null,
 		loading: false
 	},
+	updatePerson:{
+		person: false,
+		loading: false,
+  		error: null
+	}
 };
 
 export default initialState;
