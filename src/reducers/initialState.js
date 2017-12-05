@@ -17,6 +17,11 @@ const initialState = {
 		error: null,
 		loading: false
 	},
+	listPerson:{
+		people: [],
+		error: null,
+		loading: false
+	},
 };
 
 export default initialState;

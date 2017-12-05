@@ -29,6 +29,11 @@ const API = {
     	}
 	},
 	person: {
+		async getAll(people){
+			const response = await fetch(`${baseURL}/person/${people.name}/${people.last_name}/${people.mail}/${people.skip}/${people.limit}`);
+			const data = await response.json();
+			return data;
+		},
 		async save (item) {
       		const response = await fetch(`${baseURL}/person`, {
 	        method: 'POST',

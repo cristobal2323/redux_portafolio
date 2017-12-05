@@ -28,7 +28,7 @@ class SavePerson extends Component {
     };
 
     await this.props.actions.savePerson(person);
-    //browserHistory.push('/');
+    browserHistory.push('/dashboard/listCliente/');
   }
 
   render () {
@@ -112,7 +112,7 @@ SavePerson.propTypes = {
 
 function mapStateToProps (state) {
   return {
-    loading: state.savePerson.items,
+    loading: state.savePerson.loading,
   }
 };
 
