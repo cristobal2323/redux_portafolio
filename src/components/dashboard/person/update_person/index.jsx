@@ -49,7 +49,7 @@ class UpdatePerson extends Component {
       <div className={DashBoardStyle.main}>
         <form onSubmit={this.handleSubmit}>
             <div className={DashBoardStyle.title}>
-                <h3>Ingreso de Persona</h3>
+                <h3>Actualizar Persona</h3>
             </div>
 
             <div className={DashBoardStyle.module_form}>

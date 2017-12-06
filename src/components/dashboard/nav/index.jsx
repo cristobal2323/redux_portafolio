@@ -38,7 +38,7 @@ class Nav extends Component {
               </ul>
             </li>
             <li className={`${NavStyle.nav_items_active}`}>
-              <p className={NavStyle.icon_planificacion}>Planificación</p>
+              <p className={NavStyle.icon_planificacion}>Stack</p>
               <ul>
                 <li><Link to="/dashboard/saveStack">Ingresar Stack</Link></li>
                 <li><Link to="/dashboard/listStack">Listado Stack</Link></li>

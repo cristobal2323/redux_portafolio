@@ -1,18 +1,4 @@
 const initialState = {
-	productList:{
-		products: [],
-		error: null,
-		loading: false
-	},
-	activeProduct:{
-		product: null,
-		error: null,
-		loading: false
-	},
-	cart:{
-		items: [],
-		total: 0
-	},
 	savePerson:{
 		error: null,
 		loading: false
@@ -26,7 +12,21 @@ const initialState = {
 		person: false,
 		loading: false,
   		error: null
-	}
+	},
+	saveStack:{
+		error: null,
+		loading: false
+	},
+	listStack:{
+		stacks: [],
+		error: null,
+		loading: false
+	},
+	updateStack:{
+		stack: false,
+		loading: false,
+  		error: null
+	},
 };
 
 export default initialState;
