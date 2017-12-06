@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
-const baseURL = 'http://localhost:3001/api';
-//const baseURL = 'https://api-portafolio.herokuapp.com/api';
+//const baseURL = 'http://localhost:3001/api';
+const baseURL = 'https://api-portafolio.herokuapp.com/api';
 
 const API = {
 	products: {
@@ -47,7 +47,6 @@ const API = {
 		    return data;
     	},
     	async update(item, id) {
-    		console.log(item, id)
       		const response = await fetch(`${baseURL}/person/${id}`, {
         	method: 'PUT',
         	headers: new Headers({
@@ -55,6 +54,14 @@ const API = {
           		Accept: 'application/json',
         	}),
         	body: JSON.stringify(item),
+      		});
+      		const data = await response.json();
+      		return data;
+    	},
+    	async delete(id) {
+    		console.log(id)
+      		const response = await fetch(`${baseURL}/person/${id}`, {
+        	method: 'DELETE',
       		});
       		const data = await response.json();
       		return data;

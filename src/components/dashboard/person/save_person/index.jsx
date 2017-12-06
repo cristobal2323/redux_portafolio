@@ -28,7 +28,7 @@ class SavePerson extends Component {
     };
 
     await this.props.actions.savePerson(person);
-    browserHistory.push('/dashboard/listCliente/');
+    browserHistory.push('/dashboard/listPerson');
   }
 
   render () {

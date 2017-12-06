@@ -3,6 +3,9 @@ import{
 	FETCH_PEOPLE_SUCCESS,
 	FETCH_PEOPLE_FAILURE,
 	FETCH_PEOPLE_SUCCESSMORE,
+	DELETE_PERSON_INIT,
+	DELETE_PERSON_SUCCESS,
+	DELETE_PERSON_FAILURE,
 } from '../actions/types';
 
 import initialState from './initialState';
@@ -35,6 +38,29 @@ export default function listPersonReducer(state = initialState.listPerson, actio
 				people: state.people.concat(action.payload),
         		error: null,
         		loading: false,
+			};
+		case DELETE_PERSON_INIT :
+			return{
+				...state,
+				loading: false,
+				error: null
+			};
+		case DELETE_PERSON_FAILURE:
+			return{
+				...state,
+				error: action.payload,
+				loading: false,
+
+			};
+		case DELETE_PERSON_SUCCESS:
+			return{
+				...state,
+				loading: false,
+				error: null,
+				people: [
+	          		...state.people.slice(0, action.payload),
+	          		...state.people.slice(parseInt(action.payload, 10)+ 1)
+	        	],
 			};
 		default:
 			return state;

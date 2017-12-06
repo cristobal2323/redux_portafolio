@@ -19,6 +19,7 @@ class ListPerson extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitMore = this.handleSubmitMore.bind(this);
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentWillMount() {
@@ -57,12 +58,20 @@ class ListPerson extends Component {
     await this.props.actions.fetchPeople(people);
   }
 
+  async handleDelete (event) {
+    event.preventDefault();
+    const id = event.currentTarget.name;
+    const num = event.currentTarget.dataset.num;
+    await this.props.actions.deletePerson(id, num);
+  }
+
   handleRedirect(event) {
     event.preventDefault();
-    browserHistory.push(event.target.value)
+    browserHistory.push(event.target.value);
   }
 
   render() {
+    console.log("cuenta",this.props.people)
     return (
       <div className={DashBoardStyle.main}>
         <div className={DashBoardStyle.title}>
@@ -91,6 +100,7 @@ class ListPerson extends Component {
           loading={this.props.loading}
           people={this.props.people}
           handleRedirect={this.handleRedirect}
+          handleDelete={this.handleDelete}
         />
         <div className={DashBoardStyle.module_view_more}>
           <button onClick={this.handleSubmitMore}> Más </button>

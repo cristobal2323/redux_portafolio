@@ -19,7 +19,7 @@ function savePersonFailure(error) {
   };
 }
 
-function savePersonInit(error) {
+function savePersonInit() {
   return {
     type: SAVE_PERSON_INIT,
   };

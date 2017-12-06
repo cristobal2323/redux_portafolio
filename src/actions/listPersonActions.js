@@ -3,6 +3,9 @@ import {
   FETCH_PEOPLE_SUCCESS,
   FETCH_PEOPLE_FAILURE,
   FETCH_PEOPLE_SUCCESSMORE,
+  DELETE_PERSON_SUCCESS,
+  DELETE_PERSON_FAILURE,
+  DELETE_PERSON_INIT,
 } from './types';
 import API from '../api';
 
@@ -34,6 +37,26 @@ function fetchPeopleSuccessMore(people) {
   };
 }
 
+function deletePersonSuccess(num) {
+  return {
+    type: DELETE_PERSON_SUCCESS,
+    payload: num,
+  };
+}
+
+function deletePersonFailure(error) {
+  return {
+    type: DELETE_PERSON_FAILURE,
+    payload: error,
+  };
+}
+
+function deletePersonInit() {
+  return {
+    type: DELETE_PERSON_INIT,
+  };
+}
+
 // Actions Creators (Async)
 
 export function fetchPeople(people) {
@@ -59,3 +82,17 @@ export function fetchPeopleMore(people) {
     }
   };
 }
+
+
+export function deletePerson(id,num) {
+  return async (dispatch) => {
+    dispatch(deletePersonInit());
+    try {
+      await API.person.delete(id);
+      return dispatch(deletePersonSuccess(num));
+    } catch (error) {
+      return dispatch(deletePersonFailure(error));
+    }
+  };
+}
+
