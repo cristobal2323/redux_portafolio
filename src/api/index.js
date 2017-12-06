@@ -59,7 +59,6 @@ const API = {
       		return data;
     	},
     	async delete(id) {
-    		console.log(id)
       		const response = await fetch(`${baseURL}/person/${id}`, {
         	method: 'DELETE',
       		});

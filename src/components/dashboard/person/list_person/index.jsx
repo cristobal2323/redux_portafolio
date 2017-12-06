@@ -71,7 +71,6 @@ class ListPerson extends Component {
   }
 
   render() {
-    console.log("cuenta",this.props.people)
     return (
       <div className={DashBoardStyle.main}>
         <div className={DashBoardStyle.title}>
