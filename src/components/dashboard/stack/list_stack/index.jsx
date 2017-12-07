@@ -2,15 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import * as listPersonActions from '../../../../actions/listPersonActions';
+import * as listStackActions from '../../../../actions/listStackActions';
 
 /* Component */
-import PersonList from './personList.jsx';
+import StackList from './stackList.jsx';
 
 /* Style */
 import DashBoardStyle from '../../../../../public/dashboard.scss';
 
-class ListPerson extends Component {
+class ListStack extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -23,46 +23,40 @@ class ListPerson extends Component {
   }
 
   async componentWillMount() {
-    const people = {
+    const stack = {
       name: null,
-      last_name: null,
-      mail: null,
       skip: 0,
       limit: 100,
     };
-    await this.props.actions.fetchPeople(people);
+    await this.props.actions.fetchStacks(stack);
   }
   async handleSubmitMore(event) {
     event.preventDefault();
-    const people = {
+    const stack = {
       name: (this.nameInput.value !== '') ? this.nameInput.value : null,
-      last_name: (this.lastNameInput.value !== '') ? this.lastNameInput.value : null,
-      mail: (this.mailInput.value !== '') ? this.mailInput.value : null,
       skip: this.state.skip,
       limit: 1,
     };
      this.setState({ skip: this.state.skip + 100 });
-    await this.props.actions.fetchPeopleMore(people);
+    await this.props.actions.fetchStacksMore(stack);
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    const people = {
+    const stack = {
       name: (this.nameInput.value !== '') ? this.nameInput.value : null,
-      last_name: (this.lastNameInput.value !== '') ? this.lastNameInput.value : null,
-      mail: (this.mailInput.value !== '') ? this.mailInput.value : null,
       skip: 0,
       limit: 100,
     };
     this.setState({ skip: 100 });
-    await this.props.actions.fetchPeople(people);
+    await this.props.actions.fetchStacks(stack);
   }
 
   async handleDelete (event) {
     event.preventDefault();
     const id = event.currentTarget.name;
     const num = event.currentTarget.dataset.num;
-    await this.props.actions.deletePerson(id, num);
+    await this.props.actions.deleteStack(id, num);
   }
 
   handleRedirect(event) {
@@ -74,7 +68,7 @@ class ListPerson extends Component {
     return (
       <div className={DashBoardStyle.main}>
         <div className={DashBoardStyle.title}>
-          <h3>Listado Persona</h3>
+          <h3>Listado Stack</h3>
         </div>
         <form method="GET" onSubmit={this.handleSubmit}>
           <div className={DashBoardStyle.module_filter}>
@@ -83,21 +77,13 @@ class ListPerson extends Component {
               <input autoComplete="off" type="text" id="name" name="name" ref={node => this.nameInput = node} />
             </div>
             <div className={DashBoardStyle.item_filter}>
-              <label htmlFor="lastName">apellido</label>
-              <input autoComplete="off" type="text" id="lastName" name="lastName" ref={node => this.lastNameInput = node} />
-            </div>
-            <div className={DashBoardStyle.item_filter}>
-              <label htmlFor="mail">mail</label>
-              <input autoComplete="off" type="text" id="mail" name="mail" ref={node => this.mailInput = node} />
-            </div>
-            <div className={DashBoardStyle.item_filter}>
               <input value="Buscar" type="submit" />
             </div>
           </div>
         </form>
-        <PersonList
+        <StackList
           loading={this.props.loading}
-          people={this.props.people}
+          stacks={this.props.stacks}
           handleRedirect={this.handleRedirect}
           handleDelete={this.handleDelete}
         />
@@ -109,23 +95,23 @@ class ListPerson extends Component {
   }
 }
 
-ListPerson.propTypes = {
-  people: PropTypes.arrayOf(PropTypes.object).isRequired,
+ListStack.propTypes = {
+  stacks: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 function mapStateToProps (state) {
   return {
-    loading: state.listPerson.loading,
-    people: state.listPerson.people,
+    loading: state.listStack.loading,
+    stacks: state.listStack.stacks,
   }
 };
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(listPersonActions, dispatch)
+    actions: bindActionCreators(listStackActions, dispatch)
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListPerson);
+export default connect(mapStateToProps, mapDispatchToProps)(ListStack);

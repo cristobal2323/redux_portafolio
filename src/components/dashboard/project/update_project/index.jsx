@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import * as updateStackActions from '../../../../actions/updateStackActions';
+import * as updateProjectActions from '../../../../actions/updateProjectActions';
 
 import DashBoardStyle from '../../../../../public/dashboard.scss';
 
-class UpdateStack extends Component {
+class UpdateProject extends Component {
   constructor (props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,34 +14,36 @@ class UpdateStack extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchStack(this.props.params.id);
+    this.props.actions.fetchProject(this.props.params.id);
   }
 
   async handleSubmit (event) {
     event.preventDefault();
-    const stack = {
+    const project = {
       name: this.nameInput.value,
-      value: this.lastNameInput.value,
+      description: this.descriptionInput.value,
+      text: this.textInput.value,
+      picture: this.pictureInput.value,
     };
 
-    await this.props.actions.updateStack(stack, this.props.params.id);
-    browserHistory.push('/dashboard/listStack');
+    await this.props.actions.updateProject(project, this.props.params.id);
+    browserHistory.push('/dashboard/listProject');
   }
 
   changeForm(name, e) {
-    const form = this.props.stack;
+    const form = this.props.project;
     form[name] = e.target.value;
   
     this.props.actions.changeForm(JSON.stringify(form));
   }
 
   render () {
-    if(this.props.stack){
+    if(this.props.project){
     return (
       <div className={DashBoardStyle.main}>
         <form onSubmit={this.handleSubmit}>
             <div className={DashBoardStyle.title}>
-                <h3>Actualizar Stack</h3>
+                <h3>Actualizar project</h3>
             </div>
 
             <div className={DashBoardStyle.module_form}>
@@ -51,12 +53,22 @@ class UpdateStack extends Component {
 
                 <div className={DashBoardStyle.item_form}>
                     <label>Nombre</label>
-                    <input type="text" value={this.props.stack.name} onChange={(event) => this.changeForm('name', event)}  ref={node => this.nameInput = node} />
+                    <input type="text" value={this.props.project.name} onChange={(event) => this.changeForm('name', event)}  ref={node => this.nameInput = node} />
                 </div>
 
                 <div className={DashBoardStyle.item_form}>
-                    <label>Apellido</label>
-                    <input type="text" value={this.props.stack.value} onChange={(event) => this.changeForm('value', event)}  ref={node => this.lastNameInput = node} />
+                    <label>Descripción</label>
+                    <input type="text" value={this.props.project.description} onChange={(event) => this.changeForm('description', event)}  ref={node => this.descriptionInput = node} />
+                </div>
+
+                <div className={DashBoardStyle.item_form}>
+                    <label>Texto</label>
+                    <input type="text" value={this.props.project.text} onChange={(event) => this.changeForm('text', event)}  ref={node => this.textInput = node} />
+                </div>
+
+                <div className={DashBoardStyle.item_form}>
+                    <label>Foto</label>
+                    <input type="text" value={this.props.project.picture} onChange={(event) => this.changeForm('picture', event)}  ref={node => this.pictureInput = node} />
                 </div>
             </div>
             
@@ -76,20 +88,20 @@ class UpdateStack extends Component {
   }
 }
 
-UpdateStack.propTypes = {
+UpdateProject.propTypes = {
   loading: PropTypes.bool,
 };
 
 function mapStateToProps (state) {
   return {
-    stack: state.updateStack.stack,
+    project: state.updateProject.project,
   }
 };
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(updateStackActions, dispatch)
+    actions: bindActionCreators(updateProjectActions, dispatch)
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateStack);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateProject);

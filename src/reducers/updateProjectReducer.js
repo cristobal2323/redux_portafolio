@@ -1,51 +1,51 @@
 import{
   CHANGE_FORM,
-  UPDATE_STACK_INIT,
-  UPDATE_STACK_SUCCESS,
-  UPDATE_STACK_FAILURE,
-  FETCH_STACK_INIT,
-  FETCH_STACK_SUCCESS,
-  FETCH_STACK_FAILURE,
+  UPDATE_PROJECT_INIT,
+  UPDATE_PROJECT_SUCCESS,
+  UPDATE_PROJECT_FAILURE,
+  FETCH_PROJECT_INIT,
+  FETCH_PROJECT_SUCCESS,
+  FETCH_PROJECT_FAILURE,
 } from '../actions/types';
 
 import initialState from './initialState';
 
-export default function updateStackReducer(state = initialState.updateStack, action) {
+export default function updateProjectReducer(state = initialState.updateProject, action) {
   switch (action.type) {
-    case FETCH_STACK_INIT:
+    case FETCH_PROJECT_INIT:
       return{
         ...state,
         loading: true,
         error: null,
-        stack: false,
+        project: false,
       };
-    case FETCH_STACK_SUCCESS:
+    case FETCH_PROJECT_SUCCESS:
       return{
         ...state,
-        stack: action.payload,
+        project: action.payload,
         error: null,
         loading: false,
       };
-    case FETCH_STACK_FAILURE:
+    case FETCH_PROJECT_FAILURE:
       return{
         ...state,
-        stack: [],
+        project: [],
         error: action.payload,
         loading: false,
       };
-    case UPDATE_STACK_INIT:
+    case UPDATE_PROJECT_INIT:
       return{
         ...state,
         loading: true,
         error: null,
       };
-    case UPDATE_STACK_FAILURE:
+    case UPDATE_PROJECT_FAILURE:
       return{
         ...state,
         error: action.payload,
         loading: false,
       };
-    case UPDATE_STACK_SUCCESS:
+    case UPDATE_PROJECT_SUCCESS:
       return{
         ...state,
         loading: false,
@@ -54,7 +54,7 @@ export default function updateStackReducer(state = initialState.updateStack, act
     case CHANGE_FORM: {
       return{
         ...state,
-        stack: JSON.parse(action.payload),
+        project: JSON.parse(action.payload),
       };
     }
     default:

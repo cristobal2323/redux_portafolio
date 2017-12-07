@@ -78,7 +78,7 @@ export function fetchStack(id) {
       const data = await API.stack.getSingle(id);
       dispatch(fetchStackSuccess(data.stack));
     } catch (error) {
-      dispatch(fetchSTACKFailure(error));
+      dispatch(fetchStackFailure(error));
     }
   };
 }

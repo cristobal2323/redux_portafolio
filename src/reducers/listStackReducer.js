@@ -10,7 +10,7 @@ import{
 
 import initialState from './initialState';
 
-export default function listPersonReducer(state = initialState.listStack, action){
+export default function listStackReducer(state = initialState.listStack, action){
 	switch(action.type){
 		case FETCH_STACKS_INIT :
 			return{

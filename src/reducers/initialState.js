@@ -27,6 +27,20 @@ const initialState = {
 		loading: false,
   		error: null
 	},
+	saveProject:{
+		error: null,
+		loading: false
+	},
+	listProject:{
+		projects: [],
+		error: null,
+		loading: false
+	},
+	updateProject:{
+		project: false,
+		loading: false,
+  		error: null
+	},
 };
 
 export default initialState;

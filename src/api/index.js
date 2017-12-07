@@ -89,7 +89,50 @@ const API = {
       		const data = await response.json();
       		return data;
     	},
-	}
+	},
+  project: {
+    async getAll(project){
+      const response = await fetch(`${baseURL}/project/${project.name}/${project.skip}/${project.limit}`);
+      const data = await response.json();
+      return data;
+    },
+    async save (item) {
+          const response = await fetch(`${baseURL}/project`, {
+          method: 'POST',
+          headers: new Headers({
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          }),
+          body: JSON.stringify(item)
+          });
+        const data = await response.json();
+        return data;
+      },
+      async update(item, id) {
+          const response = await fetch(`${baseURL}/project/${id}`, {
+          method: 'PUT',
+          headers: new Headers({
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+          }),
+          body: JSON.stringify(item),
+          });
+          const data = await response.json();
+          return data;
+      },
+      async delete(id) {
+          const response = await fetch(`${baseURL}/project/${id}`, {
+          method: 'DELETE',
+          });
+          const data = await response.json();
+          return data;
+      },
+      async getSingle(id) {
+          const response = await fetch(`${baseURL}/project/${id}`);
+          const data = await response.json();
+          return data;
+      },
+  }
 
 }
 

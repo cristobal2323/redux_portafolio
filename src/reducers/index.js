@@ -11,6 +11,11 @@ import saveStack from './saveStackReducer';
 import listStack from './listStackReducer';
 import updateStack from './updateStackReducer';
 
+/* Project */
+import saveProject from './saveProjectReducer';
+import listProject from './listProjectReducer';
+import updateProject from './updateProjectReducer';
+
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	savePerson,
@@ -19,6 +24,9 @@ const rootReducer = combineReducers({
 	saveStack,
 	listStack,
 	updateStack,
+	saveProject,
+	listProject,
+	updateProject,
 });
 
 export default rootReducer;
