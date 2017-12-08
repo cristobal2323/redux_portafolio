@@ -2,15 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-import * as listProjectActions from '../../../../actions/listProjectActions';
+import * as listTimeActions from '../../../../actions/listTimeActions';
 
 /* Component */
-import ProjectList from './projectList.jsx';
+import TimeList from './timeList.jsx';
 
 /* Style */
 import DashBoardStyle from '../../../../../public/dashboard.scss';
 
-class ListProject extends Component {
+class ListTime extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -23,40 +23,40 @@ class ListProject extends Component {
   }
 
   async componentWillMount() {
-    const project = {
+    const time = {
       name: null,
       skip: 0,
       limit: 100,
     };
-    await this.props.actions.fetchProjects(project);
+    await this.props.actions.fetchTimes(time);
   }
   async handleSubmitMore(event) {
     event.preventDefault();
-    const project = {
+    const time = {
       name: (this.nameInput.value !== '') ? this.nameInput.value : null,
       skip: this.state.skip,
       limit: 1,
     };
      this.setState({ skip: this.state.skip + 100 });
-    await this.props.actions.fetchProjectsMore(project);
+    await this.props.actions.fetchTimesMore(time);
   }
 
   async handleSubmit(event) {
     event.preventDefault();
-    const project = {
+    const time = {
       name: (this.nameInput.value !== '') ? this.nameInput.value : null,
       skip: 0,
       limit: 100,
     };
     this.setState({ skip: 100 });
-    await this.props.actions.fetchProjects(project);
+    await this.props.actions.fetchTimes(time);
   }
 
   async handleDelete (event) {
     event.preventDefault();
     const id = event.currentTarget.name;
     const num = event.currentTarget.dataset.num;
-    await this.props.actions.deleteProject(id, num);
+    await this.props.actions.deleteTime(id, num);
   }
 
   handleRedirect(event) {
@@ -68,7 +68,7 @@ class ListProject extends Component {
     return (
       <div className={DashBoardStyle.main}>
         <div className={DashBoardStyle.title}>
-          <h3>Listado Project</h3>
+          <h3>Listado Times</h3>
         </div>
         <form method="GET" onSubmit={this.handleSubmit}>
           <div className={DashBoardStyle.module_filter}>
@@ -81,9 +81,9 @@ class ListProject extends Component {
             </div>
           </div>
         </form>
-        <ProjectList
+        <TimeList
           loading={this.props.loading}
-          projects={this.props.projects}
+          times={this.props.times}
           handleRedirect={this.handleRedirect}
           handleDelete={this.handleDelete}
         />
@@ -95,23 +95,23 @@ class ListProject extends Component {
   }
 }
 
-ListProject.propTypes = {
-  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+ListTime.propTypes = {
+  times: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
 };
 
 function mapStateToProps (state) {
   return {
-    loading: state.listProject.loading,
-    projects: state.listProject.projects,
+    loading: state.listTime.loading,
+    times: state.listTime.times,
   }
 };
 
 function mapDispatchToProps (dispatch) {
   return {
-    actions: bindActionCreators(listProjectActions, dispatch)
+    actions: bindActionCreators(listTimeActions, dispatch)
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListProject);
+export default connect(mapStateToProps, mapDispatchToProps)(ListTime);

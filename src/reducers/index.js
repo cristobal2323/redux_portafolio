@@ -16,6 +16,11 @@ import saveProject from './saveProjectReducer';
 import listProject from './listProjectReducer';
 import updateProject from './updateProjectReducer';
 
+/* Time */
+import saveTime from './saveTimeReducer';
+import listTime from './listTimeReducer';
+import updateTime from './updateTimeReducer';
+
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	savePerson,
@@ -27,6 +32,9 @@ const rootReducer = combineReducers({
 	saveProject,
 	listProject,
 	updateProject,
+	saveTime,
+	listTime,
+	updateTime,
 });
 
 export default rootReducer;

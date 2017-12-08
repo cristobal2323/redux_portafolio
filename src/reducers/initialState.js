@@ -41,6 +41,20 @@ const initialState = {
 		loading: false,
   		error: null
 	},
+	saveTime:{
+		error: null,
+		loading: false
+	},
+	listTime:{
+		times: [],
+		error: null,
+		loading: false
+	},
+	updateTime:{
+		time: false,
+		loading: false,
+  		error: null
+	},
 };
 
 export default initialState;

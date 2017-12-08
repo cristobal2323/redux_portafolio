@@ -20,6 +20,11 @@ import SaveProject from './components/dashboard/project/save_project/index.jsx';
 import ListProject from './components/dashboard/project/list_project/index.jsx';
 import UpdateProject from './components/dashboard/project/update_project/index.jsx';
 
+/* Time */
+import SaveTime from './components/dashboard/time/save_time/index.jsx';
+import ListTime from './components/dashboard/time/list_time/index.jsx';
+import UpdateTime from './components/dashboard/time/update_time/index.jsx';
+
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
@@ -35,6 +40,10 @@ export default (
         <Route path="/dashboard/saveProject" component={SaveProject} />
         <Route path="/dashboard/listProject" component={ListProject} />
         <Route path="/dashboard/updateProject/:id" component={UpdateProject} />
+
+        <Route path="/dashboard/saveTimeLine" component={SaveTime} />
+        <Route path="/dashboard/listTime" component={ListTime} />
+        <Route path="/dashboard/updateTimeLine/:id" component={UpdateTime} />
     </Route>
   </Route>
 );

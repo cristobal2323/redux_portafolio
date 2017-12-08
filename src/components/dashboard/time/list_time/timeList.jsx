@@ -3,9 +3,9 @@ import React, { Component, PropTypes } from 'react';
 /* Style */
 import DashBoardStyle from '../../../../../public/dashboard.scss';
 
-const ProjectList = ({
+const TimeList = ({
   loading,
-  projects,
+  times,
   handleRedirect,
   handleDelete,
 }) => (
@@ -22,17 +22,17 @@ const ProjectList = ({
       </thead>
       <tbody>
         {
-          projects.map((itemProjects,i) => (
+          times.map((itemTimes,i) => (
             <tr key={i}>
               <td>
                 <select onChange={handleRedirect}>
                   <option value="">Seleccione</option>
-                  <option value={`/dashboard/updateProject/${itemProjects._id}`}>Descripción</option>
+                  <option value={`/dashboard/updateTimeLine/${itemTimes._id}`}>Descripción</option>
                 </select>
               </td>
-              <td>{itemProjects.name}</td>
-              <td>{itemProjects.description}</td>
-              <td className={DashBoardStyle.module_table_center}><a data-num={i} onClick={handleDelete} name={itemProjects._id} ><i className={`${DashBoardStyle.fa} ${DashBoardStyle["fa-trash"]}`} aria-hidden="true"></i></a></td>
+              <td>{itemTimes.name}</td>
+              <td>{itemTimes.description}</td>
+              <td className={DashBoardStyle.module_table_center}><a data-num={i} onClick={handleDelete} name={itemTimes._id} ><i className={`${DashBoardStyle.fa} ${DashBoardStyle["fa-trash"]}`} aria-hidden="true"></i></a></td>
             </tr>
           ))
         }
@@ -41,11 +41,11 @@ const ProjectList = ({
   </div>
 );
 
-ProjectList.propTypes = {
+TimeList.propTypes = {
   loading: PropTypes.bool.isRequired,
-  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  times: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleRedirect: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };
 
-export default ProjectList;
+export default TimeList;
