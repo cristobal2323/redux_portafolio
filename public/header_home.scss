@@ -6,6 +6,10 @@
 	padding: 1em .5em;
 	align-items: center;
 	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+	z-index: 3;
+	top: 0;
 	.header_home_logo{
 		position: relative;
 		h1{
@@ -69,9 +73,8 @@
 		@include vertical-tablet-down {
         	width: 100%;
         	ul{
-        		display: none;
         		&.nav_active{
-        			display: flex;
+        			display: none;
         		}
 	        	li{
 	        		width: 100%;
@@ -102,6 +105,7 @@
 	width: 80%;
 	max-width: 1200px;
 	padding: 1em 0 4em 0;
+	margin-top: 65px;
 	.header_img_pic{
 		width: 200px;
 		margin-right: 2em;
@@ -160,5 +164,6 @@
 	}
 	@include vertical-tablet-down {
 	    padding: 2em 0 3em 0;
+	    margin-top: 50px;
 	}
 }

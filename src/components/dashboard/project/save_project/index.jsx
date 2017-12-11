@@ -19,6 +19,7 @@ class SaveProject extends Component {
       description: this.descriptionInput.value,
       text: this.textInput.value,
       picture: this.pictureInput.value,
+      link: this.linkInput.value,
     };
 
     await this.props.actions.saveProject(project);
@@ -56,6 +57,11 @@ class SaveProject extends Component {
                 <div className={DashBoardStyle.item_form}>
                     <label>Foto</label>
                     <input type="text" ref={node => this.pictureInput = node} />
+                </div>
+
+                <div className={DashBoardStyle.item_form}>
+                    <label>Link</label>
+                    <input type="text" ref={node => this.linkInput = node} />
                 </div>
 
             </div>

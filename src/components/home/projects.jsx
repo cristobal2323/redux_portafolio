@@ -2,46 +2,29 @@ import React, { PropTypes } from 'react';
 import HomeStyle from '../../../public/home.scss';
 
 const Projects = ({
-
+  projects
 }) => (
-	<section className={HomeStyle.projects}>
+	<section id="project" className={HomeStyle.projects}>
           <div className={HomeStyle.projects_item}>
             <h3>Projects</h3>
             <div className={HomeStyle.projects_box}>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p> vitae urna auctor, sed blandit ex tristique</p>
-                <a href="#">Project</a>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/350x150" alt="test" />
-                <h4>Undurraga TI - 2010</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor elit ac ultrices cursus. Aenean ullamcorper lacus vitae urna auctor, sed blandit ex tristique</p>
-              </div>
+            {
+              projects.map((projects,i) => (
+                <div key={i}>
+                  {(projects.picture != "")?<img src={projects.picture} alt="test" />:""}
+                  <h4>{projects.text}</h4>
+                  <p>{projects.description}</p>
+                  {(projects.link != "")?<a href={projects.link}>Ver github</a>:""}
+                </div>
+              ))
+            }
             </div>
           </div>
         </section>
 );
+
+Projects.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Projects;

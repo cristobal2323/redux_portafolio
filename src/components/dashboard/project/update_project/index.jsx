@@ -24,6 +24,7 @@ class UpdateProject extends Component {
       description: this.descriptionInput.value,
       text: this.textInput.value,
       picture: this.pictureInput.value,
+      link: this.linkInput.value,
     };
 
     await this.props.actions.updateProject(project, this.props.params.id);
@@ -69,6 +70,11 @@ class UpdateProject extends Component {
                 <div className={DashBoardStyle.item_form}>
                     <label>Foto</label>
                     <input type="text" value={this.props.project.picture} onChange={(event) => this.changeForm('picture', event)}  ref={node => this.pictureInput = node} />
+                </div>
+
+                <div className={DashBoardStyle.item_form}>
+                    <label>Link</label>
+                    <input type="text" value={this.props.project.link} onChange={(event) => this.changeForm('link', event)}  ref={node => this.linkInput = node} />
                 </div>
             </div>
             

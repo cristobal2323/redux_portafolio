@@ -55,6 +55,20 @@ const initialState = {
 		loading: false,
   		error: null
 	},
+	home:{
+		person: {},
+		errorPerson: null,
+		loadingPerson: false,
+		stacks: [],
+		errorStack: null,
+		loadingStack: false,
+		times: [],
+		errorTime: null,
+		loadingTime: false,
+		projects: [],
+		errorProject: null,
+		loadingProject: false
+	},
 };
 
 export default initialState;

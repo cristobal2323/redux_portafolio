@@ -21,6 +21,9 @@ import saveTime from './saveTimeReducer';
 import listTime from './listTimeReducer';
 import updateTime from './updateTimeReducer';
 
+/* Home */
+import home from './homeReducer';
+
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	savePerson,
@@ -35,6 +38,7 @@ const rootReducer = combineReducers({
 	saveTime,
 	listTime,
 	updateTime,
+	home,
 });
 
 export default rootReducer;
