@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
-const baseURL = 'http://localhost:3001/api';
-//const baseURL = 'https://api-portafolio.herokuapp.com/api';
+//const baseURL = 'http://localhost:3001/api';
+const baseURL = 'https://api-portafolio.herokuapp.com/api';
 
 const API = {
 	person: {
