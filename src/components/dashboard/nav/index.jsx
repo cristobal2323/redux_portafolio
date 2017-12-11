@@ -34,7 +34,7 @@ class Nav extends Component {
               <p className={`${NavStyle.icon_dam}`}>Timeline</p>
               <ul>
                 <li><Link to="/dashboard/saveTimeLine">Ingresar TimeLine</Link></li>
-                <li><Link to="/dashboard/listTimeLine">Listado TimeLine</Link></li>
+                <li><Link to="/dashboard/listTime">Listado TimeLine</Link></li>
               </ul>
             </li>
             <li className={`${NavStyle.nav_items_active}`}>
